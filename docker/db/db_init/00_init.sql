@@ -1,0 +1,6 @@
+CREATE DATABASE project;
+CREATE DATABASE test_project;
+
+CREATE USER user@'%' IDENTIFIED BY 'pass';
+GRANT ALL ON *.* TO user@'%';
+FLUSH PRIVILEGES;

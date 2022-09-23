@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./docker/web
+    ports:
+      - "${WEB_PORT:-3000}:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+      - mailhog
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./docker/db/db_init:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "${MAILHOG_WEB_PORT:-8025}:8025"
