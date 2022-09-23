@@ -45,6 +45,11 @@ class PagesController extends AppController
      */
     public function display(string ...$path): ?Response
     {
+        $this->loadComponent('Authentication.Authentication', [
+            'logoutRedirect' => '/users/login',  // Default is false
+        ]);
+        $user = $this->Authentication->getIdentity();
+        $this->set('user', $user);
         if (!$path) {
             return $this->redirect('/');
         }
@@ -69,5 +74,6 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+
     }
 }
