@@ -52,3 +52,16 @@ $ docker-compose run --rm web bin/cake users addSuperuser
 ```
 $ docker-compose run --rm web bin/cake users add_user --help
 ```
+
+# URL
+
+## 管理画面
+- /admin
+- /admin/login
+- /admin/users/edit/1
+
+## ユーザ画面
+- /users
+- /login
+
+# 認証なしオープンページ

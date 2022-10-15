@@ -73,6 +73,13 @@ return static function (RouteBuilder $routes) {
         $builder->fallbacks();
     });
 
+    $routes->prefix('Admin', function (RouteBuilder $routes) {
+        // ここのすべてのルートには、 `/admin` というプレフィックスが付きます。
+        // また、 `'prefix' => 'Admin'` ルート要素が追加されます。
+        // これは、これらのルートのURLを生成するときに必要になります
+        $routes->fallbacks(DashedRoute::class);
+    });
+
     /*
      * If you need a different set of middleware or none at all,
      * open new scope and define routes there.
