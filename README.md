@@ -58,10 +58,17 @@ $ docker-compose run --rm web bin/cake users add_user --help
 ## 管理画面
 - /admin
 - /admin/login
+- /admin/users/index
+- /admin/users/add
 - /admin/users/edit/1
+- /admin/users/delete/1
 
 ## ユーザ画面
 - /users
 - /login
+  - /mypage
+
 
 # 認証なしオープンページ
+- /
+- /pages/hello
