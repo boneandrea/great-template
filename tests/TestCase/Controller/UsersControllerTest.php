@@ -27,8 +27,12 @@ class UsersControllerTest extends TestCase
         'app.Users',
     ];
 
+	public function mySetUp(): void
+	{
+		$this->UserLogin();
+	}
 
-    public function testHome(): void
+    public function testHomejj(): void
     {
         $this->get("/mypage");
         $this->assertResponseOk();

@@ -112,4 +112,11 @@ class PagesControllerTest extends TestCase
         $this->assertThat(403, $this->logicalNot(new StatusCode($this->_response)));
         $this->assertResponseNotContains('CSRF');
     }
+
+    public function testOpenPagejj()
+    {
+        $this->get('/');
+        $this->assertResponseOk();
+        $this->assertResponseContains('公開ページ');
+    }
 }

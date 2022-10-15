@@ -48,6 +48,15 @@ return [
             ],
             'bypassAuth' => true,
         ],
+        [
+            'role' => '*',
+            'prefix' => '*',
+            'extension' => '*',
+            'plugin' => '*',
+            'controller' => 'Pages',
+            'action' => '*',
+            'bypassAuth' => true,
+        ],
         //admin role allowed to all the things
         [
             'role' => 'admin',
