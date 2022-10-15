@@ -18,21 +18,19 @@ class UsersControllerTest extends TestCase
     use CommonTrait;
     use IntegrationTestTrait;
 
-    /**
-     * Fixtures
-     *
-     * @var array<string>
-     */
-    protected $fixtures = [
-        'app.Users',
-    ];
+    public function getFixtures(): array
+    {
+        return [
+            'app.Users',
+        ];
+    }
 
 	public function mySetUp(): void
 	{
-		$this->UserLogin();
+        $this->UserLogin();
 	}
 
-    public function testHomejj(): void
+    public function testHomeaajj(): void
     {
         $this->get("/mypage");
         $this->assertResponseOk();

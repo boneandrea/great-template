@@ -50,9 +50,11 @@ class PagesController extends AppController
         ]);
         $user = $this->Authentication->getIdentity();
         $this->set('user', $user);
+
         if (!$path) {
-            //            return $this->redirect('/');
+            return $this->redirect('/');
         }
+
         if (in_array('..', $path, true) || in_array('.', $path, true)) {
             throw new ForbiddenException();
         }
@@ -74,6 +76,5 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
-
     }
 }

@@ -62,4 +62,6 @@ session_id('cli');
 // load schema from a SQL dump file with
 // use Cake\TestSuite\Fixture\SchemaLoader;
 // (new SchemaLoader())->loadSqlFiles('./tests/schema.sql', 'test');
-(new Migrator())->run();
+$migrator=new Migrator();
+$migrator->run();
+$migrator->run(['plugin' => \CakeDC\Users\Plugin::class]);

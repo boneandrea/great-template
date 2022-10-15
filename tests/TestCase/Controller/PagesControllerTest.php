@@ -119,4 +119,11 @@ class PagesControllerTest extends TestCase
         $this->assertResponseOk();
         $this->assertResponseContains('公開ページ');
     }
+
+    public function testOpenPage1jj()
+    {
+        $this->get('/pages/hello');
+        $this->assertResponseOk();
+        $this->assertResponseContains('これも公開ページ');
+    }
 }

@@ -11,87 +11,32 @@ use Cake\TestSuite\Fixture\TestFixture;
 class UsersFixture extends TestFixture
 {
     /**
-     * Import
-     *
-     * @var array<string, mixed>
-     */
-    public $import = ['table' => 'users'];
-
-    /**
      * Init method
      *
      * @return void
      */
-    public function init(): void
-    {
-        $this->records = [
-            [
-                'id' => '1c970c32-ce77-44fc-8b86-8ecfc10733f3',
-                'username' => 'admin1',
-                'email' => 'admin1@example.com',
-                'password' => '$2y$10$njbVQ5.3NSqAvqWYdhCBP.KdYoBzWWEdNRUEeCgjzz8La.MBg04VC',
-                'first_name' => null,
-                'last_name' => null,
-                'token' => null,
-                'token_expires' => null,
-                'api_token' => null,
-                'activation_date' => null,
-                'secret' => null,
-                'secret_verified' => null,
-                'tos_date' => null,
-                'active' => true,
-                'is_superuser' => false,
-                'role' => 'admin',
-                'created' => '2022-10-15 03:35:34',
-                'modified' => '2022-10-15 03:35:34',
-                'additional_data' => null,
-                'last_login' => '2022-10-15 03:59:57',
-            ],
-            [
-                'id' => '241a9807-7281-4438-a945-c20478b6919f',
-                'username' => 'user1',
-                'email' => 'user1@example.com',
-                'password' => '$2y$10$6.3YjvULvv3Z8g82FvMogugmpgdcEiTXV3O4pEqNaxE1E1wJNh5JC',
-                'first_name' => null,
-                'last_name' => null,
-                'token' => null,
-                'token_expires' => null,
-                'api_token' => null,
-                'activation_date' => null,
-                'secret' => null,
-                'secret_verified' => null,
-                'tos_date' => null,
-                'active' => true,
-                'is_superuser' => false,
-                'role' => 'user',
-                'created' => '2022-10-15 03:35:34',
-                'modified' => '2022-10-15 03:35:34',
-                'additional_data' => null,
-                'last_login' => null,
-            ],
-            [
-                'id' => 'e16f22c0-cfd2-45ba-9ce3-40fa657b4383',
-                'username' => 'superadmin',
-                'email' => 'superadmin@example.com',
-                'password' => '$2y$10$7qLDO3sU6t9pWYA1lvh13uBSvYsJiVEhX9U17CMYnAtlhHfrGH3wW',
-                'first_name' => null,
-                'last_name' => null,
-                'token' => null,
-                'token_expires' => null,
-                'api_token' => null,
-                'activation_date' => null,
-                'secret' => null,
-                'secret_verified' => null,
-                'tos_date' => null,
-                'active' => true,
-                'is_superuser' => true,
-                'role' => 'superuser',
-                'created' => '2022-10-15 03:35:34',
-                'modified' => '2022-10-15 03:35:34',
-                'additional_data' => null,
-                'last_login' => null,
-            ],
-        ];
-        parent::init();
-    }
+    public $records = [
+        [
+            'id' => '5ed8744d-c6e7-465b-b5cb-85e62b30a127',
+            'username' => 'Lorem ipsum dolor sit amet',
+            'email' => 'Lorem ipsum dolor sit amet',
+            'password' => 'Lorem ipsum dolor sit amet',
+            'first_name' => 'Lorem ipsum dolor sit amet',
+            'last_name' => 'Lorem ipsum dolor sit amet',
+            'token' => 'Lorem ipsum dolor sit amet',
+            'token_expires' => '2022-10-15 05:35:04',
+            'api_token' => 'Lorem ipsum dolor sit amet',
+            'activation_date' => '2022-10-15 05:35:04',
+            'secret' => 'Lorem ipsum dolor sit amet',
+            'secret_verified' => 1,
+            'tos_date' => '2022-10-15 05:35:04',
+            'active' => 1,
+            'is_superuser' => 1,
+            'role' => 'Lorem ipsum dolor sit amet',
+            'created' => '2022-10-15 05:35:04',
+            'modified' => '2022-10-15 05:35:04',
+            'additional_data' => '',
+            'last_login' => '2022-10-15 05:35:04',
+        ],
+    ];
 }

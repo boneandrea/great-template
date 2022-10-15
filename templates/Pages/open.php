@@ -102,6 +102,7 @@
                             <h3>アクション</h3>
                             <a href="/login">user login</a>
                             <a href="/admin/login">admin login</a>
+                            <a href="/pages/hello">static page</a>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 namespace App\Test\TestCase\Controller;
 
 use Cake\Event\EventManager;
-use Cake\I18n\Time;
+use Cake\I18n\FrozenTime;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\EmailTrait;
 use Symfony\Component\DomCrawler\Crawler;
@@ -21,7 +21,7 @@ trait CommonTrait
 	{
 		parent::setUp();
 
-		$this->_now = new \Cake\i18n\Time();
+		$this->_now = new FrozenTime();
 
 		// warning もエラーにする
 		set_error_handler(function ($errno, $errstr, $errfile, $errline) {
@@ -34,7 +34,6 @@ trait CommonTrait
 
 		$this->enableCsrfToken();
 		$this->enableSecurityToken();
-		$this->setUpRequest();
 	}
 
 	public function tearDown():void
@@ -72,7 +71,7 @@ trait CommonTrait
 			);
 		}
 
-		\Cake\i18n\Time::setTestNow($this->_now); // 1テストでmockすると全体に影響するのを回避
+		FrozenTime::setTestNow($this->_now); // 1テストでmockすると全体に影響するのを回避
 		restore_error_handler();
 	}
 

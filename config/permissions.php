@@ -66,6 +66,14 @@ return [
             'controller' => '*',
             'action' => '*',
         ],
+        [
+            'role' => 'users',
+            'prefix' => '*',
+            'extension' => '*',
+            'plugin' => '*',
+            'controller' => 'users',
+            'action' => ["mypage"],
+        ],
         //specific actions allowed for the all roles in Users plugin
         [
             'role' => '*',
