@@ -42,3 +42,13 @@ stdoutにパスワードが表示されるので確保する
 ```
 $ docker-compose run --rm web bin/cake users addSuperuser
 ```
+### (手動)superadminの追加
+stdoutにパスワードが表示されるので確保する
+```
+$ docker-compose run --rm web bin/cake users addSuperuser
+```
+
+詳しくは
+```
+$ docker-compose run --rm web bin/cake users add_user --help
+```
