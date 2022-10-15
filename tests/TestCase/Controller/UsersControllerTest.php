@@ -45,7 +45,14 @@ class UsersControllerTest extends TestCase
 
     public function testLoginGET(): void
     {
-        $this->get("/");
+        $this->get("/login");
+        $this->assertRedirectContains("/mypage");
+    }
+
+    public function testLoginGETWhenLoggedOut(): void
+    {
+        $this->logout();
+        $this->get("/login");
         $this->assertResponseOk();
     }
 
