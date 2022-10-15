@@ -32,7 +32,7 @@ trait CommonTrait
 			$this->mySetUp();
 		}
 
-		$this->enableCsrfToken();
+        $this->enableCsrfToken();
 		$this->enableSecurityToken();
 	}
 
@@ -106,37 +106,28 @@ trait CommonTrait
 	 */
 	public function UserLogin($option = [])
 	{
-		$this->_setFormAuth([
-			'id' => 1,
-			'user_profile' => [
-				'name' => 'my name',
-				'birthday' => '2000-1-1',
-				'has_dog' => 1,
-				'has_cat' => 1,
-				'has_other' => 1,
-				'number_dog' => 1,
-				'number_cat' => 1,
-				'number_other' => 1,
-				'dogs' => [
-					['name' => 'dog1'],
-				],
-				'cats' => [
-					['name' => 'cat1'],
-				],
-			],
-		]);
+        $id='241a9807-7281-4438-a945-c20478b6919f';
+        $this->_admin_login($id);
 	}
 
 	public function AdminLogin($option = [])
 	{
-		$this->_setFormAuth($option);
+        $id = 'e16f22c0-cfd2-45ba-9ce3-40fa657b4383';
+        $this->_admin_login($id);
 	}
 
-	public function UserLogout()
+    public function _admin_login(string $id)
+    {
+        // Cake4/AuthPlugin2 ではObject
+        $this->session([
+            'Auth' => $this->fetchTable("Users")->get($id),
+        ]);
+    }
+
+	public function logout()
 	{
 		$this->session([
 			'Auth' => [
-				'User' => [],
 			],
 		]);
 	}

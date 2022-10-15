@@ -66,12 +66,13 @@ return [
             'controller' => '*',
             'action' => '*',
         ],
+        // 一般ユーザ
         [
-            'role' => 'users',
+            'role' => 'user',
             'prefix' => '*',
             'extension' => '*',
             'plugin' => '*',
-            'controller' => 'users',
+            'controller' => 'Users',
             'action' => ["mypage"],
         ],
         //specific actions allowed for the all roles in Users plugin

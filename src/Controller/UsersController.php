@@ -11,11 +11,18 @@ namespace App\Controller;
  */
 class UsersController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->loadComponent('Authentication.Authentication', [
+            'logoutRedirect' => '/users/login',  // Default is false
+        ]);
+        $user = $this->Authentication->getIdentity();
+        $this->set('user', $user);
+    }
+
+    public function mypage(){
+    }
     public function index()
     {
         $users = $this->paginate($this->Users);

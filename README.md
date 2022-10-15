@@ -37,10 +37,10 @@ usersテーブルを作る
 $ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
 ```
 
-### superadminの追加
-stdoutにパスワードが表示されるので確保する
+### userの登録
+superadmin, admin1, user1 が登録される
 ```
-$ docker-compose run --rm web bin/cake users addSuperuser
+$ bin/cake migrations seed --seed UsersSeed
 ```
 ### (手動)superadminの追加
 stdoutにパスワードが表示されるので確保する
@@ -56,19 +56,26 @@ $ docker-compose run --rm web bin/cake users add_user --help
 # URL
 
 ## 管理画面
-- /admin
-- /admin/login
-- /admin/users/index
-- /admin/users/add
-- /admin/users/edit/1
-- /admin/users/delete/1
+[ ] - /admin
+[ ] - /admin/login
+[x] - /admin/users/index
+[x] - /admin/users/add
+[x] - /admin/users/edit/1
+[x] - /admin/users/delete/1
 
 ## ユーザ画面
-- /users
-- /login
-  - /mypage
+[ ] - /login
+  [x] - /mypage
+  [x] - /mypage ログイン後ここにくる
 
 
 # 認証なしオープンページ
-- /
-- /pages/hello
+[x] - /
+[x] - /pages/hello
+
+
+# Others
+[ ] php-cs-fixer
+[ ] phpmd
+[ ] prettier
+[ ] eslint

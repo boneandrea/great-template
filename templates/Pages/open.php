@@ -100,9 +100,11 @@
                     <div class="row">
                         <div class="column links">
                             <h3>アクション</h3>
+                            <a href="/pages/hello">static page</a>
                             <a href="/login">user login</a>
                             <a href="/admin/login">admin login</a>
-                            <a href="/pages/hello">static page</a>
+                            <a href="/admin/users">Users</a>
+                            <a href="/mypage">mypage</a>
                         </div>
                     </div>
                 </div>

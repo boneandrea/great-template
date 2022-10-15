@@ -120,31 +120,6 @@ $config = [
         // list of valid hosts to allow redirects after valid login via the `redirect` query param
         'AllowedRedirectHosts' => $allowedRedirectHosts,
     ],
-    'OneTimePasswordAuthenticator' => [
-        'checker' => \CakeDC\Auth\Authentication\DefaultOneTimePasswordAuthenticationChecker::class,
-        'login' => false,
-        'issuer' => null,
-        // The number of digits the resulting codes will be
-        'digits' => 6,
-        // The number of seconds a code will be valid
-        'period' => 30,
-        // The algorithm used
-        'algorithm' => 'sha1',
-        // QR-code provider (more on this later)
-        'qrcodeprovider' => null,
-        // Random Number Generator provider (more on this later)
-        'rngprovider' => null,
-    ],
-    'U2f' => [
-        'enabled' => false,
-        'checker' => \CakeDC\Auth\Authentication\DefaultU2fAuthenticationChecker::class,
-    ],
-    'Webauthn2fa' => [
-        'enabled' => false,
-        'appName' => null,//App must set a valid name here
-        'id' => null,//default value is the current domain
-        'checker' => \CakeDC\Auth\Authentication\DefaultWebauthn2fAuthenticationChecker::class,
-    ],
     // default configuration used to auto-load the Auth Component, override to change the way Auth works
     'Auth' => [
         'FormLoginFailure' => [
@@ -160,7 +135,7 @@ $config = [
         ],
         'AuthenticationComponent' => [
             'load' => true,
-            'loginRedirect' => '/',
+            'loginRedirect' => '/mypage',
             'requireIdentity' => false,
         ],
         'Authenticators' => [
