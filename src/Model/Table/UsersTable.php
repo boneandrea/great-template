@@ -7,6 +7,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use CakeDC\Users\Model\Table\UsersTable as CDUserTable;
 
 /**
  * Users Model
@@ -27,7 +28,7 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class UsersTable extends Table
+class UsersTable extends CDUserTable
 {
     /**
      * Initialize method

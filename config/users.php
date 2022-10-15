@@ -32,7 +32,7 @@ if (Configure::read('App.fullBaseUrl')) {
 $config = [
     'Users' => [
         // Table used to manage users
-        'table' => 'CakeDC/Users.Users',
+        'table' => 'Users',
         // Controller used to manage users plugin features & actions
         'controller' => 'CakeDC/Users.Users',
         // Password Hasher
@@ -189,14 +189,6 @@ $config = [
                     'httponly' => true,
                 ],
                 'urlChecker' => 'Authentication.CakeRouter',
-            ],
-            'Social' => [
-                'className' => 'CakeDC/Users.Social',
-                'skipTwoFactorVerify' => true,
-            ],
-            'SocialPendingEmail' => [
-                'className' => 'CakeDC/Users.SocialPendingEmail',
-                'skipTwoFactorVerify' => true,
             ],
         ],
         'Identifiers' => [
