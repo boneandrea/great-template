@@ -54,9 +54,6 @@ return static function (RouteBuilder $routes) {
 
         $builder->connect('/mypage', ['controller' => 'Users', 'action' => 'mypage']);
 
-        /*
-         * ...and connect the rest of 'Pages' controller's URLs.
-         */
         $builder->connect('/pages/*', 'Pages::display');
 
         /*
@@ -79,6 +76,9 @@ return static function (RouteBuilder $routes) {
         // ここのすべてのルートには、 `/admin` というプレフィックスが付きます。
         // また、 `'prefix' => 'Admin'` ルート要素が追加されます。
         // これは、これらのルートのURLを生成するときに必要になります
+        $routes->connect('/', ['controller' => 'AdminUsers', 'action' => 'login']);
+        $routes->connect('/login', ['controller' => 'AdminUsers', 'action' => 'login']);
+        $routes->connect('/home', ['controller' => 'AdminUsers', 'action' => 'home']);
         $routes->fallbacks(DashedRoute::class);
     });
 
