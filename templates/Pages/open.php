@@ -1,53 +1,52 @@
 <?php
-    /**
-     * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
-     * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
-     *
-     * Licensed under The MIT License
-     * For full copyright and license information, please see the LICENSE.txt
-     * Redistributions of files must retain the above copyright notice.
-     *
-     * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
-     * @link      https://cakephp.org CakePHP(tm) Project
-     * @since     0.10.0
-     * @license   https://opensource.org/licenses/mit-license.php MIT License
-     * @var \App\View\AppView $this
-     */
-    use Cake\Cache\Cache;
-    use Cake\Core\Configure;
-    use Cake\Core\Plugin;
-    use Cake\Datasource\ConnectionManager;
-    use Cake\Error\Debugger;
-    use Cake\Http\Exception\NotFoundException;
+	/**
+	 * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+	 * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org).
+	 *
+	 * Licensed under The MIT License
+	 * For full copyright and license information, please see the LICENSE.txt
+	 * Redistributions of files must retain the above copyright notice.
+	 *
+	 * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+	 *
+	 * @see      https://cakephp.org CakePHP(tm) Project
+	 * @since     0.10.0
+	 *
+	 * @license   https://opensource.org/licenses/mit-license.php MIT License
+	 *
+	 * @var \App\View\AppView $this
+	 */
+	use Cake\Core\Configure;
+	use Cake\Datasource\ConnectionManager;
+	use Cake\Error\Debugger;
+	use Cake\Http\Exception\NotFoundException;
 
-    $this->disableAutoLayout();
+	$this->disableAutoLayout();
 
-    $checkConnection = function (string $name) {
-        $error = null;
-        $connected = false;
-        try {
-            $connection = ConnectionManager::get($name);
-            $connected = $connection->connect();
-        } catch (Exception $connectionError) {
-            $error = $connectionError->getMessage();
-            if (method_exists($connectionError, 'getAttributes')) {
-                $attributes = $connectionError->getAttributes();
-                if (isset($attributes['message'])) {
-                    $error .= '<br />' . $attributes['message'];
-                }
-            }
-        }
+	$checkConnection = function (string $name) {
+		$error = null;
+		$connected = false;
+		try {
+			$connection = ConnectionManager::get($name);
+			$connected = $connection->connect();
+		} catch (Exception $connectionError) {
+			$error = $connectionError->getMessage();
+			if (method_exists($connectionError, 'getAttributes')) {
+				$attributes = $connectionError->getAttributes();
+				if (isset($attributes['message'])) {
+					$error .= '<br />'.$attributes['message'];
+				}
+			}
+		}
 
-        return compact('connected', 'error');
-    };
+		return compact('connected', 'error');
+	};
 
-    if (!Configure::read('debug')) :
-                       throw new NotFoundException(
-                           'Please replace templates/Pages/home.php with your own version or re-enable debug mode.'
-                       );
-    endif;
+	if (!Configure::read('debug')) :
+		throw new NotFoundException('Please replace templates/Pages/home.php with your own version or re-enable debug mode.');
+	endif;
 
-?>
+	?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -99,17 +98,19 @@
                     </div>
                     <div class="row">
                         <div class="column links">
-                            <h3>アクション</h3>
+                            <h3>For user</h3>
                             <a href="/pages/hello">static page</a>
                             <a href="/login">user login</a>
-                            <a href="/admin/login">admin login</a>
-                            <a href="/admin/users">Users</a>
                             <a href="/mypage">mypage</a>
+                            <h3>For admin</h3>
+                            <a href="/admin/login">admin login</a>
+                            <a href="/admin/dashboard">admin dashboard</a>
+                            <a href="/admin/users">Users</a>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-        <?=$this->Html->script("helo")?>
+        <?=$this->Html->script('helo')?>
     </body>
 </html>

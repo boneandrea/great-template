@@ -27,7 +27,7 @@ class AdminUsersController extends AppController
 		parent::beforeFilter($event);
 	}
 
-	public function home()
+	public function dashboard()
 	{
 	}
 }
