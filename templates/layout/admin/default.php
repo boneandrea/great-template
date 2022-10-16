@@ -176,15 +176,9 @@
                 </div>
                 <div class="content">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <?= $this->Flash->render() ?>
-                                        <?= $this->fetch('content') ?>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                            <?= $this->Flash->render() ?>
+                            <?= $this->fetch('content') ?>
                         </div>
                     </div>
                 </div>
