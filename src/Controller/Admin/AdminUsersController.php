@@ -21,9 +21,7 @@ class AdminUsersController extends AppController
 	public function initialize(): void
 	{
 		parent::initialize();
-		if (in_array($this->request->getParam('action'), ['login', 'requestResetPassword', 'changePassword'])) {
-			$this->viewBuilder()->setLayout('admin/login');
-		}
+		$this->viewBuilder()->setLayout('admin/default');
 	}
 
 	public function beforeFilter(\Cake\Event\EventInterface $event)
