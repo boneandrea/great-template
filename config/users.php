@@ -45,6 +45,7 @@ $config = [
 			'required' => true,
 			// determines if registration workflow includes email validation
 			'validate' => true,
+			'mailerClass' => \App\Mailer\AdminMailer::class,
 		],
 		'Registration' => [
 			// determines if the register is enabled

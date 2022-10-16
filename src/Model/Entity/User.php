@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use CakeDC\Users\Model\Entity\User as CDUser;
 
 /**
  * User Entity.
@@ -31,7 +32,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime|null                 $last_login
  * @property \CakeDC\Users\Model\Entity\SocialAccount[] $social_accounts
  */
-class User extends Entity
+class User extends CDUser
 {
 	/**
 	 * Fields that can be mass assigned using newEntity() or patchEntity().
