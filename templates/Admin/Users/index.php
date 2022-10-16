@@ -1,14 +1,14 @@
 <?php
-    /**
-     * @var \App\View\AppView $this
-     * @var iterable<\App\Model\Entity\User> $users
-     */
-?>
+	/**
+	 * @var \App\View\AppView                $this
+	 * @var iterable<\App\Model\Entity\User> $users
+	 */
+	?>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table
+                <h3 class="card-title">
                     <a href="/admin/users/add">
                         <button type="button" class="btn btn-primary">New User</button>
                     </a>
@@ -90,12 +90,11 @@
     </div>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?> |
+            <?= $this->Paginator->first('<< '.__('first')) ?>
+            <?= $this->Paginator->prev('< '.__('previous')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?> |
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->next(__('next').' >') ?>
+            <?= $this->Paginator->last(__('last').' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>
