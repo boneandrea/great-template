@@ -68,6 +68,7 @@ class Application extends BaseApplication
 		// Load more plugins here
 		$this->addPlugin(\CakeDC\Users\Plugin::class);
 		Configure::write('Users.config', ['users']);
+		$this->addPlugin('CustomBake');
 	}
 
 	/**
@@ -137,5 +138,11 @@ class Application extends BaseApplication
 		$this->addPlugin('Migrations');
 
 		// Load more plugins here
+
+		// bin/cake bake template Users --prefix=Admin --theme CustomBake
+		// @see https://book.cakephp.org/bake/2/en/development.html#creating-a-bake-theme
+		//
+		// Configure::write('Bake.theme', 'CustomBake');
+		$this->addPlugin('Bake');
 	}
 }
