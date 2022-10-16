@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
-
 /**
  * Users Controller.
  *
@@ -15,11 +13,11 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
-	/**
-	 * Index method.
-	 *
-	 * @return \Cake\Http\Response|void|null Renders view
-	 */
+	public function initialize(): void
+	{
+		parent::initialize();
+	}
+
 	public function index()
 	{
 		$users = $this->paginate($this->Users);
@@ -27,15 +25,6 @@ class UsersController extends AppController
 		$this->set(compact('users'));
 	}
 
-	/**
-	 * View method.
-	 *
-	 * @param string|null $id user id
-	 *
-	 * @return \Cake\Http\Response|void|null Renders view
-	 *
-	 * @throws \Cake\Datasource\Exception\RecordNotFoundException when record not found
-	 */
 	public function view($id = null)
 	{
 		$user = $this->Users->get($id, [

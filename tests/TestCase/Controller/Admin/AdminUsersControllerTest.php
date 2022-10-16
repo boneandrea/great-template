@@ -30,20 +30,20 @@ class AdminUsersControllerTest extends TestCase
 		$this->AdminLogin();
 	}
 
-	public function testLoginGET(): void
+	public function testLoginGETjj(): void
 	{
 		$this->get('/admin/login');
-		$this->assertRedirectContains('/admin/home');
+		$this->assertRedirectContains('/admin/login');
 	}
 
-	public function testLoginGETWhenLoggedOut(): void
+	public function testLoginGETWhenLoggedOutjj(): void
 	{
 		$this->logout();
 		$this->get('/admin/login');
 		$this->assertResponseOk();
 	}
 
-	public function testLoginPOST(): void
+	public function testLoginPOSTjj(): void
 	{
 		$this->logout();
 		$this->post('/admin/login', [
@@ -60,21 +60,14 @@ class AdminUsersControllerTest extends TestCase
 		$this->assertResponseContains('管理画面');
 	}
 
-	public function testLoginGETByUser(): void
+	public function testLoginGETByUserjj(): void
 	{
 		$this->UserLogin();
 		$this->get('/admin/login');
 		$this->assertRedirect();
 	}
 
-	public function testLoginGETWhenLoggedOutByUser(): void
-	{
-		$this->UserLogin();
-		$this->get('/admin/login');
-		$this->assertRedirect();
-	}
-
-	public function testLoginPOSTByUser(): void
+	public function testLoginPOSTByUserjj(): void
 	{
 		$this->UserLogin();
 		$this->post('/admin/login', [

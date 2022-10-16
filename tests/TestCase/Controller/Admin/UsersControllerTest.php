@@ -34,6 +34,7 @@ class UsersControllerTest extends TestCase
 	{
 		$this->get('/admin/users');
 		$this->assertResponseOk();
+		$this->assertStringContainsString('superadmin', $this->dom()->filter('.sidebar .info')->eq(0)->text());
 	}
 
 	public function testView(): void
@@ -43,7 +44,7 @@ class UsersControllerTest extends TestCase
 		$this->assertResponseOk();
 	}
 
-	public function testEditPOSTjj(): void
+	public function testEditPOST(): void
 	{
 		$id = '241a9807-7281-4438-a945-c20478b6919f';
 		$this->post("/admin/users/edit/$id", ['first_name' => 'name']);

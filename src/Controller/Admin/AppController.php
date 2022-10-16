@@ -41,6 +41,11 @@ class AppController extends Controller
 		$this->loadComponent('Authentication.Authentication', [
 			'logoutRedirect' => '/admin/login',
 		]);
+		$this->viewBuilder()->setLayout('admin/default');
+
+        $user = $this->Authentication->getIdentity();
+        $this->set("user",$user);
+
 		/*
 		 * Enable the following component for recommended CakePHP form protection settings.
 		 * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
