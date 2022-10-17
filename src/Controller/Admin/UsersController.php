@@ -20,7 +20,8 @@ class UsersController extends AppController
 
 	public function index()
 	{
-		$users = $this->paginate($this->Users);
+		$query = $this->Users->findByRole('user');
+		$users = $this->paginate($query);
 
 		$this->set(compact('users'));
 	}

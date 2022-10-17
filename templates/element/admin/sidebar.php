@@ -5,7 +5,7 @@
             <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-            <a href="#" class="d-block"><?= $user->username?></a>
+            <a href="/admin/dashboard" class="d-block"><?= $user?->username?></a>
         </div>
     </div>
 
@@ -31,11 +31,13 @@
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
-                <ul class="nav nav-treeview d-none">
+                <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="/admin/users" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Active Page</p>
+                            <p>
+                                ユーザ管理
+                            </p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -73,7 +75,6 @@
         </ul>
     </nav>
     <script>
-        console.log(q(".logout"))
         q(".logout").addEventListener("click", e=>{
             if(!confirm("ログアウトしますか？")){
                 e.preventDefault();

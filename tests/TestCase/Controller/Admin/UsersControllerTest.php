@@ -34,7 +34,8 @@ class UsersControllerTest extends TestCase
 	{
 		$this->get('/admin/users');
 		$this->assertResponseOk();
-		$this->assertStringContainsString('superadmin', $this->dom()->filter('.sidebar .info')->eq(0)->text());
+		$this->assertCount(1, $this->viewVariable('users'));
+		$this->assertStringContainsString('admin', $this->dom()->filter('.sidebar .info')->eq(0)->text());
 	}
 
 	public function testView(): void

@@ -2,9 +2,7 @@
 
 namespace App\Test\TestCase\Controller;
 
-use Cake\Event\EventManager;
 use Cake\I18n\FrozenTime;
-use Cake\ORM\TableRegistry;
 use Cake\TestSuite\EmailTrait;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -17,7 +15,7 @@ trait CommonTrait
 	public $title;
 	public $AMILIEtitleText = true;
 
-	public function setUp():void
+	public function setUp(): void
 	{
 		parent::setUp();
 
@@ -32,11 +30,11 @@ trait CommonTrait
 			$this->mySetUp();
 		}
 
-        $this->enableCsrfToken();
+		$this->enableCsrfToken();
 		$this->enableSecurityToken();
 	}
 
-	public function tearDown():void
+	public function tearDown(): void
 	{
 		parent::tearDown();
 		if (method_exists($this, 'myTearDown')) {
@@ -75,30 +73,6 @@ trait CommonTrait
 		restore_error_handler();
 	}
 
-	public function _setFormAuth($option = [])
-	{
-		$params = [
-			'id' => 1,
-			'name' => 'MY_NAME',
-			'email' => 'email@pu.ga',
-			'role' => 0,
-			'firebase_uid' => 'e0Ew0Z0EQDeLZBfVFOS14TnY2Pl2',
-			'coordinator_profile' => [
-				'zip' => '115-0045',
-				'prefecture_id' => 13,
-				'address1' => '北区赤羽',
-				'address2' => '1丁目19-9 ヴェルデ赤羽 302号',
-			],
-			'coordinator_types' => [],
-		];
-
-		$this->session([
-			'Auth' => [
-				'User' => array_merge($params, $option),
-			],
-		]);
-	}
-
 	/**
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 *
@@ -106,23 +80,25 @@ trait CommonTrait
 	 */
 	public function UserLogin($option = [])
 	{
-        $id='241a9807-7281-4438-a945-c20478b6919f';
-        $this->_admin_login($id);
+		$id = '241a9807-7281-4438-a945-c20478b6919f';
+		$this->_admin_login($id);
 	}
 
+	/**
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
 	public function AdminLogin($option = [])
 	{
-        $id = 'e16f22c0-cfd2-45ba-9ce3-40fa657b4383';
-        $this->_admin_login($id);
+		$id = '1c970c32-ce77-44fc-8b86-8ecfc10733f3';
+		$this->_admin_login($id);
 	}
 
-    public function _admin_login(string $id)
-    {
-        // Cake4/AuthPlugin2 ではObject
-        $this->session([
-            'Auth' => $this->fetchTable("Users")->get($id),
-        ]);
-    }
+	public function _admin_login(string $id)
+	{
+		$this->session([
+			'Auth' => $this->fetchTable('Users')->get($id),
+		]);
+	}
 
 	public function logout()
 	{
