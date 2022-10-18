@@ -16,6 +16,7 @@ CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パス
 - CakeDCによるユーザ管理
   - パスワードリセットフロー
     - メール送信なども行う
+    - 各種カスタムは[CakeDCドキュメント](https://github.com/CakeDC/users/blob/master/Docs/Home.md#i-want-to)参照
   - ユーザ新規登録（不要なら潰せる）
 
 ## Quickstart
