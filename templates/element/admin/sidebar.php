@@ -23,11 +23,11 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-            <li class="nav-item menu-open">
+            <li class="nav-item">
                 <a href="/admin/users" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
+          <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
-                        ユーザ管理
+          menu
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
@@ -43,7 +43,7 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Inactive Page</p>
+                            <p>other page</p>
                         </a>
                     </li>
                 </ul>
@@ -56,7 +56,7 @@
                     </p>
                 </a>
             </li>
-
+            <li class="nav-item">
                 <a href="/admin/admin-users/logout" class="nav-link logout">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
