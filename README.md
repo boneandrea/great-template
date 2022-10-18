@@ -28,7 +28,7 @@ $ git clone
 web, db, mailhog(簡易メールサーバー/クライアント、WebUIあり)の3つができる
 ```
 $ docker-compose build --no-cache
-$ docker-compose up
+$ docker-compose up -d
 $ docker-compose run --rm web composer i --no-interaction
 $ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
 ```
@@ -68,7 +68,10 @@ $ docker-compose run --rm web bin/cake migrations migrate
 ```
 
 ### userの登録
-superadmin, admin1, user1 が登録される
+3usersが登録される
+- superadmin@example.com (role:superuser)/ 123456
+- admin1@example.com (role:admin)/ 123456
+- user1@example.com (role:user)/ 123456
 ```
 $ bin/cake migrations seed --seed
 ```
@@ -88,7 +91,8 @@ docker-compose run --rm web bin/cake cache clear _cake_core_
 ```
 
 # Try app
-http://localhost:3000
+http://localhost:3000 (WebApp)
+http://localhost:8025 (Email client)
 
 # test
 ```
@@ -100,28 +104,26 @@ $ docker-compose --rm web composer test
 - .eslintrc.js
 - .prettierrc.js
 
-手動設置
+以下は手動設置
 - tool/git-hooks/pre-commit
 
 # URL
 
 ## 管理画面
-[ ] - /admin
-[ ] - /admin/login
-[x] - /admin/users/index
-[x] - /admin/users/add
-[x] - /admin/users/edit/1
-[x] - /admin/users/delete/1
+- /admin/login
+- /admin/users/index
+- /admin/users/add
+- /admin/users/edit/1
+- /admin/users/delete/1
 
 ## ユーザ画面
-[ ] - /login
-  [x] - /mypage
-  [x] - /mypage ログイン後ここにくる
+- /login
+- /mypage
 
 
-# 認証なしオープンページ
-[x] - /
-[x] - /pages/hello
+# 認証なしページ
+- /
+- /pages/hello
 
 
 # Others
