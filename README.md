@@ -98,6 +98,7 @@ $ docker-compose --rm web composer test
 
 # lintなどの設定
 以下は設置済
+- .php-cs-fixer.php
 - .eslintrc.js
 - .prettierrc.js
 
