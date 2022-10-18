@@ -14,17 +14,18 @@ CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パス
     - メール送信なども行う
   - ユーザ新規登録（不要なら潰せる）
 
-## Installation
+## Quickstart
 
 新規アプリ立ち上げは以下
 
 ### ソース取得
 ```
 $ git clone
+$ cd WORKDIR
+$ cp tool/git-hooks/pre-commit .git/hooks
 ```
 
 ### サーバ構築
-起動までを行う.
 web, db, mailhog(簡易メールサーバー/クライアント、WebUIあり)の3つができる
 ```
 $ docker-compose build --no-cache
@@ -33,7 +34,7 @@ $ docker-compose run --rm web composer i --no-interaction
 $ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
 ```
 
-edit config/app_local.php
+edit `config/app_local.php`
 ```
     'Datasources' => [
         'default' => [
@@ -75,24 +76,16 @@ $ docker-compose run --rm web bin/cake migrations migrate
 ```
 $ bin/cake migrations seed --seed
 ```
-### (手動)superadminの追加
-stdoutにパスワードが表示されるので確保する
-```
-$ docker-compose run --rm web bin/cake users addSuperuser
-```
-
-詳しくは
-```
-$ docker-compose run --rm web bin/cake users add_user --help
-```
-## cleanup
+### cleanup
 ```
 docker-compose run --rm web bin/cake cache clear _cake_core_
 ```
+ここまででWebAppが動く.
+
 
 # Try app
-http://localhost:3000 (WebApp)
-http://localhost:8025 (Email client)
+- http://localhost:3000 (WebApp)
+- http://localhost:8025 (Email client)
 
 # test
 ```
@@ -107,6 +100,17 @@ $ docker-compose --rm web composer test
 以下は手動設置
 - tool/git-hooks/pre-commit
 
+
+### (必要なら手動で)superadminの追加
+stdoutにパスワードが表示されるので確保する
+```
+$ docker-compose run --rm web bin/cake users addSuperuser
+```
+
+詳しくは
+```
+$ docker-compose run --rm web bin/cake users add_user --help
+```
 # URL
 
 ## 管理画面
