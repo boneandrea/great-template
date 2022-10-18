@@ -16,41 +16,45 @@ class AppAuthenticationServiceLoader extends AuthenticationServiceLoader
 	 */
 	public function __invoke(ServerRequestInterface $request)
 	{
-		if ($request->getParam('prefix') !== 'Admin') {
-			// 一般ユーザ
-			$service = new AuthenticationService([
-				'unauthenticatedRedirect' => Router::url('/login'),
-			]);
-
-			// Load identifiers, ensure we check email and password fields
-			$service->loadIdentifier('Authentication.Password', [
-				'resolver' => [
-					'className' => 'Authentication.Orm',
-					'userModel' => 'Users',
-				],
-				'fields' => [
-					'username' => 'email',
-					'password' => 'password',
-				],
-			]);
-
-			$service->loadAuthenticator('Authentication.Session', [
-				'sessionKey' => 'Auth',
-			]);
-
-			// Configure form data check to pick email and password
-			$service->loadAuthenticator('Authentication.Form', [
-				'fields' => [
-					IdentifierInterface::CREDENTIAL_USERNAME => 'email',
-					IdentifierInterface::CREDENTIAL_PASSWORD => 'password',
-				],
-				'loginUrl' => Router::url('/login'),
-			]);
-
-			return $service;
+		if ($request->getParam('prefix') === 'Admin') {
+			return $this->createAdminAuthenticator();
 		}
 
-		return $this->createAdminAuthenticator();
+		return $this->createUserAuthenticator();
+	}
+
+	public function createUserAuthenticator()
+	{
+		$service = new AuthenticationService([
+			'unauthenticatedRedirect' => Router::url('/login'),
+		]);
+
+		// Load identifiers, ensure we check email and password fields
+		$service->loadIdentifier('Authentication.Password', [
+			'resolver' => [
+				'className' => 'Authentication.Orm',
+				'userModel' => 'Users',
+			],
+			'fields' => [
+				'username' => 'email',
+				'password' => 'password',
+			],
+		]);
+
+		$service->loadAuthenticator('Authentication.Session', [
+			'sessionKey' => 'Auth',
+		]);
+
+		// Configure form data check to pick email and password
+		$service->loadAuthenticator('Authentication.Form', [
+			'fields' => [
+				IdentifierInterface::CREDENTIAL_USERNAME => 'email',
+				IdentifierInterface::CREDENTIAL_PASSWORD => 'password',
+			],
+			'loginUrl' => Router::url('/login'),
+		]);
+
+		return $service;
 	}
 
 	public function createAdminAuthenticator()

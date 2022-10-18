@@ -25,7 +25,7 @@ class AdminUsersController extends AppController
 	public function beforeFilter(\Cake\Event\EventInterface $event)
 	{
 		parent::beforeFilter($event);
-        $this->Authentication->addUnauthenticatedActions(['login']);
+		$this->Authentication->addUnauthenticatedActions(['login']);
 	}
 
 	public function dashboard()
@@ -60,15 +60,15 @@ class AdminUsersController extends AppController
 		}
 	}
 
-    public function logout()
-    {
-        $result = $this->Authentication->getResult();
-        // regardless of POST or GET, redirect if user is logged in
-        if ($result->isValid()) {
-            $this->Authentication->logout();
-            $this->Flash->success(__d('cake_d_c/users', 'You\'ve successfully logged out'));
+	public function logout()
+	{
+		$result = $this->Authentication->getResult();
+		// regardless of POST or GET, redirect if user is logged in
+		if ($result->isValid()) {
+			$this->Authentication->logout();
+			$this->Flash->success(__d('cake_d_c/users', 'You\'ve successfully logged out'));
 
-            return $this->redirect("/admin/login");
-        }
-    }
+			return $this->redirect('/admin/login');
+		}
+	}
 }
