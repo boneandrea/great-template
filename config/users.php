@@ -132,8 +132,8 @@ $config = [
 			'targetAuthenticator' => 'CakeDC\Auth\Authenticator\FormAuthenticator',
 		],
 		'Authentication' => [
-			'serviceLoader' => \CakeDC\Users\Loader\AuthenticationServiceLoader::class,
-		],
+            'serviceLoader' => \App\Loader\AppAuthenticationServiceLoader::class,
+        ],
 		'AuthenticationComponent' => [
 			'load' => true,
 			'loginRedirect' => '/mypage',

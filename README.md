@@ -29,6 +29,7 @@ web, db, mailhog(簡易メールサーバー/クライアント、WebUIあり)�
 ```
 $ docker-compose build --no-cache
 $ docker-compose up
+$ docker-compose run --rm web comspoer i
 ```
 
 ### DB初期設定

@@ -25,7 +25,7 @@ class AdminUsersController extends AppController
 	public function beforeFilter(\Cake\Event\EventInterface $event)
 	{
 		parent::beforeFilter($event);
-		$this->Authentication->addUnauthenticatedActions(['login']);
+        $this->Authentication->addUnauthenticatedActions(['login']);
 	}
 
 	public function dashboard()
@@ -39,4 +39,36 @@ class AdminUsersController extends AppController
 
 		$this->set(compact('users'));
 	}
+
+	public function login()
+	{
+		$this->request->allowMethod(['get', 'post']);
+		$result = $this->Authentication->getResult();
+		// regardless of POST or GET, redirect if user is logged in
+		if ($result->isValid()) {
+			// redirect after login success
+			$redirect = $this->request->getQuery('redirect', [
+				'controller' => 'AdminUsers',
+				'action' => 'dashboard',
+			]);
+
+			return $this->redirect($redirect);
+		}
+		// display error if user submitted and authentication failed
+		if ($this->request->is('post') && !$result->isValid()) {
+			$this->Flash->error(__('Invalid username or password'));
+		}
+	}
+
+    public function logout()
+    {
+        $result = $this->Authentication->getResult();
+        // regardless of POST or GET, redirect if user is logged in
+        if ($result->isValid()) {
+            $this->Authentication->logout();
+            $this->Flash->success(__d('cake_d_c/users', 'You\'ve successfully logged out'));
+
+            return $this->redirect("/admin/login");
+        }
+    }
 }

@@ -65,7 +65,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/logout" class="nav-link logout">
+                <a href="/admin/admin-users/logout" class="nav-link logout">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Logout
