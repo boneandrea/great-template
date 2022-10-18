@@ -29,7 +29,7 @@ web, db, mailhog(簡易メールサーバー/クライアント、WebUIあり)�
 ```
 $ docker-compose build --no-cache
 $ docker-compose up
-$ docker-compose run --rm web composer i
+$ docker-compose run --rm web composer i --no-interaction
 $ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
 ```
 
