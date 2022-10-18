@@ -25,7 +25,7 @@ class UsersSeed extends AbstractSeed
                 'id' => '1c970c32-ce77-44fc-8b86-8ecfc10733f3',
                 'username' => 'admin1',
                 'email' => 'admin1@example.com',
-                'password' => '$2y$10$njbVQ5.3NSqAvqWYdhCBP.KdYoBzWWEdNRUEeCgjzz8La.MBg04VC',
+                'password' => '$2y$10$vUUEsWJBZL7YK1J7TR1NA.cWmg1iYe98yUcgUWfcPug/rOwt7aAum',
                 'first_name' => NULL,
                 'last_name' => NULL,
                 'token' => NULL,
@@ -38,16 +38,31 @@ class UsersSeed extends AbstractSeed
                 'active' => true,
                 'is_superuser' => false,
                 'role' => 'admin',
-                'created' => '2022-10-15 03:35:34',
-                'modified' =>'2022-10-15 03:35:34',
+                'created' => 
+                Cake\I18n\FrozenTime::__set_state(array(
+                'date' => '2022-10-15 03:35:34.000000',
+                'timezone_type' => 3,
+                'timezone' => 'Asia/Tokyo',
+                )),
+                'modified' => 
+                Cake\I18n\FrozenTime::__set_state(array(
+                'date' => '2022-10-18 15:23:22.000000',
+                'timezone_type' => 3,
+                'timezone' => 'Asia/Tokyo',
+                )),
                 'additional_data' => NULL,
-                'last_login' => NULL,
+                'last_login' => 
+                Cake\I18n\FrozenTime::__set_state(array(
+                'date' => '2022-10-18 15:21:30.000000',
+                'timezone_type' => 3,
+                'timezone' => 'Asia/Tokyo',
+                )),
             ],
             [
                 'id' => '241a9807-7281-4438-a945-c20478b6919f',
                 'username' => 'user1',
                 'email' => 'user1@example.com',
-                'password' => '$2y$10$6.3YjvULvv3Z8g82FvMogugmpgdcEiTXV3O4pEqNaxE1E1wJNh5JC',
+                'password' => '$2y$10$TmTLWvAwyol1VxMhAnbnoOyJGKMEdupsO21aLR/LmqddyHUb7sQ1e',
                 'first_name' => NULL,
                 'last_name' => NULL,
                 'token' => NULL,
@@ -60,16 +75,31 @@ class UsersSeed extends AbstractSeed
                 'active' => true,
                 'is_superuser' => false,
                 'role' => 'user',
-                'created' => '2022-10-15 03:35:34',
-                'modified' =>'2022-10-15 03:35:34',
+                'created' => 
+                Cake\I18n\FrozenTime::__set_state(array(
+                'date' => '2022-10-15 03:35:34.000000',
+                'timezone_type' => 3,
+                'timezone' => 'Asia/Tokyo',
+                )),
+                'modified' => 
+                Cake\I18n\FrozenTime::__set_state(array(
+                'date' => '2022-10-18 15:24:47.000000',
+                'timezone_type' => 3,
+                'timezone' => 'Asia/Tokyo',
+                )),
                 'additional_data' => NULL,
-                'last_login' => NULL,
+                'last_login' => 
+                Cake\I18n\FrozenTime::__set_state(array(
+                'date' => '2022-10-18 14:43:46.000000',
+                'timezone_type' => 3,
+                'timezone' => 'Asia/Tokyo',
+                )),
             ],
             [
                 'id' => 'e16f22c0-cfd2-45ba-9ce3-40fa657b4383',
                 'username' => 'superadmin',
                 'email' => 'superadmin@example.com',
-                'password' => '$2y$10$7qLDO3sU6t9pWYA1lvh13uBSvYsJiVEhX9U17CMYnAtlhHfrGH3wW',
+                'password' => '$2y$10$p7kAwkhz203EpJP5plSBgeenzn2QXg.0R9cX.5KRZicsyKQDi/np.',
                 'first_name' => NULL,
                 'last_name' => NULL,
                 'token' => NULL,
@@ -82,15 +112,24 @@ class UsersSeed extends AbstractSeed
                 'active' => true,
                 'is_superuser' => true,
                 'role' => 'superuser',
-                'created' => '2022-10-15 03:35:34',
-                'modified' =>'2022-10-15 03:35:34',
+                'created' => 
+                Cake\I18n\FrozenTime::__set_state(array(
+                'date' => '2022-10-15 03:35:34.000000',
+                'timezone_type' => 3,
+                'timezone' => 'Asia/Tokyo',
+                )),
+                'modified' => 
+                Cake\I18n\FrozenTime::__set_state(array(
+                'date' => '2022-10-18 15:23:46.000000',
+                'timezone_type' => 3,
+                'timezone' => 'Asia/Tokyo',
+                )),
                 'additional_data' => NULL,
                 'last_login' => NULL,
             ],
         ];
 
         $table = $this->table('users');
-        $table->truncate();
         $table->insert($data)->save();
     }
 }
