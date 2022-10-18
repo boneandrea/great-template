@@ -20,7 +20,7 @@ CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パス
 
 ## Quickstart
 
-新規アプリ立ち上げは以下の[cleanup](#cleanup)までを行う
+新規アプリ立ち上げ時に、以下の[cleanup](#cleanup)までを行う
 
 ### ソース取得
 ```
