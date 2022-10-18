@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class DropSocialAccounts extends AbstractMigration
+class Initial extends AbstractMigration
 {
     /**
      * Change Method.
@@ -14,7 +14,5 @@ class DropSocialAccounts extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('social_accounts');
-        $table->drop()->save();
     }
 }

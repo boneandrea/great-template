@@ -35,7 +35,7 @@ $ docker-compose run --rm web comspoer i
 ### DB初期設定
 usersテーブルを作る
 ```
-$ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
+$ docker-compose run --rm web bin/cake migrations migrate
 ```
 
 ### userの登録
