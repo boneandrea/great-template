@@ -31,7 +31,6 @@ web, db, mailhog(簡易メールサーバー/クライアント、WebUIあり)�
 $ docker-compose build --no-cache
 $ docker-compose up -d
 $ docker-compose run --rm web composer i --no-interaction
-$ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
 ```
 
 edit `config/app_local.php`
@@ -65,6 +64,7 @@ edit `config/app_local.php`
 ### DB初期設定
 usersテーブルを作る
 ```
+$ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
 $ docker-compose run --rm web bin/cake migrations migrate
 ```
 
