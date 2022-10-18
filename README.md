@@ -1,6 +1,7 @@
 # CakePHP+CakeDCでログインとユーザ管理をテンプレート化する
 
-CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パスワードリセットなどのテンプレートアプリ
+CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パスワードリセットなどのテンプレートアプリ  
+コマンド10行以内でアプリが起動する
 
 ## できるもの
 - ユーザテーブル
@@ -16,7 +17,7 @@ CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パス
 
 ## Quickstart
 
-新規アプリ立ち上げは以下
+新規アプリ立ち上げは以下の[cleanup](#cleanup)までを行う
 
 ### ソース取得
 ```
