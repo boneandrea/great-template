@@ -102,7 +102,7 @@ $ docker-compose --rm web composer test
 - .eslintrc.js
 - .prettierrc.js
 
-以下は手動設置
+以下を手動設置すると上記3つのlinterが動く
 - tool/git-hooks/pre-commit
 
 
