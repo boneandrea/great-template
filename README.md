@@ -1,7 +1,7 @@
 # ログインとユーザ管理までのテンプレート
 
 CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パスワードリセットなどのテンプレートアプリ  
-`git clone`から10コマンド以内でアプリが起動する
+`git clone`から**10コマンド以内で**アプリが起動する
 
 ## できるもの
 - ユーザテーブル
@@ -130,6 +130,6 @@ $ docker-compose run --rm web bin/cake users add_user --help
 - /mypage
 
 
-# 認証なしページ
+## 認証なしページ
 - /
 - /pages/hello
