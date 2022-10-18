@@ -1,4 +1,4 @@
-# CakePHP+CakeDCでログインとユーザ管理をテンプレート化する
+# ログインとユーザ管理までのテンプレート
 
 CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パスワードリセットなどのテンプレートアプリ  
 コマンド10行以内でアプリが起動する
