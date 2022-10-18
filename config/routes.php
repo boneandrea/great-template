@@ -78,7 +78,6 @@ return static function (RouteBuilder $routes) {
 		// ここのすべてのルートには、 `/admin` というプレフィックスが付きます。
 		// また、 `'prefix' => 'Admin'` ルート要素が追加されます。
 		// これは、これらのルートのURLを生成するときに必要になります
-		$routes->connect('/', ['controller' => 'AdminUsers', 'action' => 'login']);
 		$routes->connect('/login', ['controller' => 'AdminUsers', 'action' => 'login']);
 		$routes->connect('/dashboard', ['controller' => 'AdminUsers', 'action' => 'dashboard']);
 		$routes->fallbacks(DashedRoute::class);

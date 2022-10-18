@@ -56,15 +56,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="/admin/admin-users" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        コンテンツ管理
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
+
                 <a href="/admin/admin-users/logout" class="nav-link logout">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
