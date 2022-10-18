@@ -124,10 +124,3 @@ $ docker-compose --rm web composer test
 # 認証なしページ
 - /
 - /pages/hello
-
-
-# Others
-[ ] php-cs-fixer
-[ ] phpmd
-[ ] prettier
-[ ] eslint
