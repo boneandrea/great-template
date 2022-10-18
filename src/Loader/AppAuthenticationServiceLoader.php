@@ -23,7 +23,7 @@ class AppAuthenticationServiceLoader extends AuthenticationServiceLoader
 		return $this->createUserAuthenticator();
 	}
 
-	public function createUserAuthenticator()
+	public function createUserAuthenticator(): AuthenticationService
 	{
 		$service = new AuthenticationService([
 			'unauthenticatedRedirect' => Router::url('/login'),
@@ -57,7 +57,7 @@ class AppAuthenticationServiceLoader extends AuthenticationServiceLoader
 		return $service;
 	}
 
-	public function createAdminAuthenticator()
+	public function createAdminAuthenticator(): AuthenticationService
 	{
 		$service = new AuthenticationService([
 			'unauthenticatedRedirect' => Router::url('/admin/login'),
