@@ -29,7 +29,6 @@ $ cp tool/git-hooks/pre-commit .git/hooks
 web, db, mailhog(簡易メールサーバー/クライアント、WebUIあり)の3つができる
 ```
 $ docker-compose build --no-cache
-$ docker-compose up -d
 $ docker-compose run --rm web composer i --no-interaction
 ```
 
@@ -78,7 +77,8 @@ $ bin/cake migrations seed --seed
 ```
 ### cleanup
 ```
-docker-compose run --rm web bin/cake cache clear _cake_core_
+$ docker-compose run --rm web bin/cake cache clear _cake_core_
+$ docker-compose up -d
 ```
 ここまででWebAppが動く.
 
