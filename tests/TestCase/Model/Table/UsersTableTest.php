@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\UsersTable;
+use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
 
 /**
@@ -36,6 +37,7 @@ class UsersTableTest extends TestCase
 		parent::setUp();
 		$config = $this->getTableLocator()->exists('Users') ? [] : ['className' => UsersTable::class];
 		$this->Users = $this->getTableLocator()->get('Users', $config);
+		Configure::load('users', 'default');
 	}
 
 	/**
@@ -55,7 +57,11 @@ class UsersTableTest extends TestCase
 	 */
 	public function testValidationDefault(): void
 	{
-		$this->markTestIncomplete('Not implemented yet.');
+		$item = $this->Users->newEntity([
+			'username' => 'name',
+			'password' => 'pass',
+		]);
+		$this->assertEmpty($item->getErrors());
 	}
 
 	/**
@@ -65,11 +71,22 @@ class UsersTableTest extends TestCase
 	 */
 	public function testBuildRules(): void
 	{
-		$this->markTestIncomplete('Not implemented yet.');
-	}
+		$item = $this->Users->newEntity([
+			'username' => 'SAME NAME',
+			'password' => 'pass',
+		]);
+		$this->Users->save($item);
 
-	public function testMyFinder(): void
-	{
-		$this->assertCount(3, $this->Users->find('sample'));
+		$item = $this->Users->newEntity([
+			'username' => 'SAME NAME', // Fails due to isUnique()
+			'password' => 'pass',
+		]);
+
+		$this->Users->save($item);
+		$errors = $item->getErrors();
+
+		$this->assertNotEmpty($errors);
+		$this->assertCount(1, $errors);
+		$this->assertArrayHasKey('username', $errors);
 	}
 }
