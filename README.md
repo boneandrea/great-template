@@ -29,8 +29,37 @@ web, db, mailhog(簡易メールサーバー/クライアント、WebUIあり)�
 ```
 $ docker-compose build --no-cache
 $ docker-compose up
-$ docker-compose run --rm web comspoer i
+$ docker-compose run --rm web composer i
+$ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
 ```
+
+edit config/app_local.php
+```
+    'Datasources' => [
+        'default' => [
+            'host' => 'db',
+            'username' => 'user',
+            'password' => 'pass',
+            'database' => 'project',
+        ],
+        'test' => [
+            'host' => 'db',
+            'username' => 'user',
+            'password' => 'pass',
+            'database' => 'test_project',
+        ],
+    ],
+    'EmailTransport' => [
+        'default' => [
+            'className' => 'Smtp',
+            'host' => 'mailhog',
+            'port' => 1025,
+            'timeout' => 30,
+            'tls' => null,
+        ],
+    ],
+```
+
 
 ### DB初期設定
 usersテーブルを作る
@@ -41,7 +70,7 @@ $ docker-compose run --rm web bin/cake migrations migrate
 ### userの登録
 superadmin, admin1, user1 が登録される
 ```
-$ bin/cake migrations seed --seed UsersSeed
+$ bin/cake migrations seed --seed
 ```
 ### (手動)superadminの追加
 stdoutにパスワードが表示されるので確保する
@@ -52,6 +81,14 @@ $ docker-compose run --rm web bin/cake users addSuperuser
 詳しくは
 ```
 $ docker-compose run --rm web bin/cake users add_user --help
+```
+
+# Try app
+http://localhost:3000
+
+# test
+```
+$ docker-compose --rm web composer test
 ```
 
 # URL
