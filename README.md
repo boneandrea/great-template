@@ -4,10 +4,10 @@ CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パス
 
 ## できるもの
 - ユーザテーブル
-  - roles
-    - superadmin
-    - admin
-    - user
+  - `roles`カラムがある。値は以下のいずれか(string)
+    - `superadmin`
+    - `admin`
+    - `user`
 - ログイン/ログアウト
 - CakeDCによるユーザ管理
   - パスワードリセットフロー
