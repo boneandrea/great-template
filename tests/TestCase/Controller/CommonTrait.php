@@ -81,7 +81,7 @@ trait CommonTrait
 	public function UserLogin($option = [])
 	{
 		$id = '241a9807-7281-4438-a945-c20478b6919f';
-		$this->_admin_login($id);
+		$this->_set_login('Auth', $id);
 	}
 
 	/**
@@ -90,13 +90,13 @@ trait CommonTrait
 	public function AdminLogin($option = [])
 	{
 		$id = '1c970c32-ce77-44fc-8b86-8ecfc10733f3';
-		$this->_admin_login($id);
+		$this->_set_login('AdminUser', $id);
 	}
 
-	public function _admin_login(string $id)
+	public function _set_login(string $sessionKey, string $id)
 	{
 		$this->session([
-			'Auth' => $this->fetchTable('Users')->get($id),
+			$sessionKey => $this->fetchTable('Users')->get($id),
 		]);
 	}
 
@@ -105,6 +105,8 @@ trait CommonTrait
 		$this->session([
 			'Auth' => [
 			],
+            "AdminUser"=>[
+            ],
 		]);
 	}
 

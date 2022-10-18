@@ -11,13 +11,13 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class AppAuthenticationServiceLoader extends AuthenticationServiceLoader
 {
+	/**
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 */
 	public function __invoke(ServerRequestInterface $request)
 	{
-		$controller = $request->getParam('controller');
-
-		if ($controller === 'Users') {
-			// 一般ユーザはこれだけ
-			// CakeDCのフル機能
+		if ($request->getParam('prefix') !== 'Admin') {
+			// 一般ユーザ
 			$service = new AuthenticationService([
 				'unauthenticatedRedirect' => Router::url('/login'),
 			]);
@@ -50,6 +50,11 @@ class AppAuthenticationServiceLoader extends AuthenticationServiceLoader
 			return $service;
 		}
 
+		return $this->createAdminAuthenticator();
+	}
+
+	public function createAdminAuthenticator()
+	{
 		$service = new AuthenticationService([
 			'unauthenticatedRedirect' => Router::url('/admin/login'),
 		]);

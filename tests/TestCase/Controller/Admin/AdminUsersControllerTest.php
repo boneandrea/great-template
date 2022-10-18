@@ -39,7 +39,6 @@ class AdminUsersControllerTest extends TestCase
 
 	public function testLoginGETWhenLoggedOut(): void
 	{
-		$this->markTestSkipped();
 		$this->logout();
 		$this->get('/admin/login');
 		$this->assertResponseOk();
@@ -47,21 +46,18 @@ class AdminUsersControllerTest extends TestCase
 
 	public function testLoginPOST(): void
 	{
-		$this->markTestSkipped();
 		$this->logout();
 		$this->post('/admin/login', [
-			'username' => 'admin1',
-			'password' => '30accfa95a6e426481d62d4b9e2699c5',
+			'email' => 'admin1@example.com',
+			'password' => '123456',
 		]);
 		$this->assertRedirect();
 	}
 
 	public function testAdminDashboard(): void
 	{
-		$this->markTestSkipped();
 		$this->get('/admin/dashboard');
 		$this->assertResponseOk();
-		$this->assertResponseContains('管理画面');
 	}
 
 	public function testLoginGETByUser(): void
@@ -75,8 +71,8 @@ class AdminUsersControllerTest extends TestCase
 	{
 		$this->UserLogin();
 		$this->post('/admin/login', [
-			'username' => 'admin1',
-			'password' => '30accfa95a6e426481d62d4b9e2699c5',
+			'email' => 'admin1@example.com',
+			'password' => '123456',
 		]);
 		$this->assertRedirect();
 	}
@@ -84,8 +80,8 @@ class AdminUsersControllerTest extends TestCase
 	public function testNotAccesibleDashboardByUser(): void
 	{
 		$this->UserLogin();
-		$this->get('/admin/dashboard');
-		$this->assertRedirect();
+		$this->get('/Admin/dashboard');
+        $this->assertRedirect();
 	}
 
 	public function testIndex(): void

@@ -59,8 +59,8 @@ class UsersControllerTest extends TestCase
 	{
 		$this->logout();
 		$this->post('/login', [
-			'username' => 'user1@example.com',
-			'password' => 'e485722ca8064d5b83cb7882bdcb144d',
+			'email' => 'user1@example.com',
+			'password' => '123456',
 		]);
 		$this->assertRedirectContains('/mypage');
 	}
