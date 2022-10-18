@@ -84,7 +84,7 @@ $ docker-compose run --rm web bin/cake users add_user --help
 ```
 ## cleanup
 ```
-docker-compose run --rm web bin/cake cache clear _cake_core
+docker-compose run --rm web bin/cake cache clear _cake_core_
 ```
 
 # Try app

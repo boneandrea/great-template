@@ -61,9 +61,24 @@ class UsersControllerTest extends TestCase
 		$this->assertResponseOk();
 	}
 
-	public function testAdd(): void
+	public function testAddGET(): void
 	{
-		$this->markTestIncomplete('Not implemented yet.');
+		$this->get('/admin/users/add');
+		$this->assertResponseOk();
+	}
+
+	public function testAddPOST(): void
+	{
+		$count = $this->fetchTable('Users')->find()->count();
+		$this->post('/admin/users/add', [
+			'username' => 'username',
+			'email' => 'email@example.com',
+			'password' => 'password',
+			'is_active' => true,
+			'is_superuser' => false,
+		]);
+		$this->assertRedirect();
+		$this->assertSame($count + 1, $this->fetchTable('Users')->find()->count());
 	}
 
 	public function testDelete(): void
