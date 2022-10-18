@@ -31,4 +31,6 @@ for FILE in `git diff --name-only --cached --diff-filter=ACMRTUXB | grep -vE "ve
     git add $FILE
 done
 
+docker-compose run --rm web composer test || exit 1
+
 exit $IS_ERROR

@@ -91,6 +91,14 @@ http://localhost:3000
 $ docker-compose --rm web composer test
 ```
 
+# lintなどの設定
+以下は設置済
+- .eslintrc.js
+- .prettierrc.js
+
+手動設置
+- tool/git-hooks/pre-commit
+
 # URL
 
 ## 管理画面
