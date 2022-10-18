@@ -69,7 +69,6 @@ edit `config/app_local.php`
 usersテーブルを作る
 ```
 $ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
-$ docker-compose run --rm web bin/cake migrations migrate
 ```
 
 ### userの登録
