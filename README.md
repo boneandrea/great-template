@@ -82,6 +82,10 @@ $ docker-compose run --rm web bin/cake users addSuperuser
 ```
 $ docker-compose run --rm web bin/cake users add_user --help
 ```
+## cleanup
+```
+docker-compose run --rm web bin/cake cache clear _cake_core
+```
 
 # Try app
 http://localhost:3000
