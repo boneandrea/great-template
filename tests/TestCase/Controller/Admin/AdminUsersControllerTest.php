@@ -81,7 +81,7 @@ class AdminUsersControllerTest extends TestCase
 	{
 		$this->UserLogin();
 		$this->get('/Admin/dashboard');
-        $this->assertRedirect();
+		$this->assertRedirect();
 	}
 
 	public function testIndex(): void
@@ -90,5 +90,51 @@ class AdminUsersControllerTest extends TestCase
 		$this->assertResponseOk();
 		$this->assertCount(1, $this->viewVariable('users'));
 		$this->assertSame('admin', $this->viewVariable('users')->first()->role);
+	}
+
+	public function testEditPOST(): void
+	{
+		$id = '1c970c32-ce77-44fc-8b86-8ecfc10733f3';
+		$this->post("/admin/admin-users/edit/$id", ['first_name' => 'name']);
+		$this->assertRedirect();
+		$user = $this->fetchTable('Users')->get($id);
+		$this->assertSame('name', $user->first_name);
+	}
+
+	public function testEditGET(): void
+	{
+		$id = '1c970c32-ce77-44fc-8b86-8ecfc10733f3';
+		$this->get("/admin/admin-users/edit/$id");
+		$this->assertResponseOk();
+	}
+
+	public function testAddGET(): void
+	{
+		$this->get('/admin/admin-users/add');
+		$this->assertResponseOk();
+	}
+
+	public function testAddPOST(): void
+	{
+		$count = $this->fetchTable('Users')->find()->count();
+		$this->post('/admin/admin-users/add', [
+			'username' => 'username',
+			'email' => 'email@example.com',
+			'password' => 'password',
+			'role' => 'admin',
+			'is_active' => true,
+			'is_superuser' => false,
+		]);
+		$this->assertRedirect();
+		$this->assertSame($count + 1, $this->fetchTable('Users')->find()->count());
+	}
+
+	public function testDelete(): void
+	{
+		$count = $this->fetchTable('Users')->find()->count();
+		$id = '1c970c32-ce77-44fc-8b86-8ecfc10733f3';
+		$this->post("/admin/admin-users/delete/$id");
+		$this->assertRedirect();
+		$this->assertSame($count - 1, $this->fetchTable('Users')->find()->count());
 	}
 }

@@ -74,6 +74,7 @@ class UsersControllerTest extends TestCase
 			'username' => 'username',
 			'email' => 'email@example.com',
 			'password' => 'password',
+			'role' => 'user',
 			'is_active' => true,
 			'is_superuser' => false,
 		]);

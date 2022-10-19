@@ -74,12 +74,14 @@ class UsersTableTest extends TestCase
 		$item = $this->Users->newEntity([
 			'username' => 'SAME NAME',
 			'password' => 'pass',
+			'role' => 'user',
 		]);
 		$this->Users->save($item);
 
 		$item = $this->Users->newEntity([
 			'username' => 'SAME NAME', // Fails due to isUnique()
 			'password' => 'pass',
+			'role' => 'user',
 		]);
 
 		$this->Users->save($item);

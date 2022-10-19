@@ -138,11 +138,18 @@ class UsersTable extends CDUserTable
 	 * application integrity.
 	 *
 	 * @param \Cake\ORM\RulesChecker $rules the rules object to be modified
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	public function buildRules(RulesChecker $rules): RulesChecker
 	{
 		$rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
 		$rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+
+		// 作成および更新操作に提供されるルールを追加
+		$rules->add(function ($entity, $options) {
+			return in_array($entity->role, ['user', 'admin']);
+		}, 'roleRule');
 
 		return $rules;
 	}
