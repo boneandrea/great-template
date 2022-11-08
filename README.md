@@ -1,6 +1,6 @@
 # ログインとユーザ管理までのテンプレート
 
-CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パスワードリセットなどのテンプレートアプリ  
+CakePHP+[CakeDC](https://github.com/CakeDC/users/)でログイン周り、パスワードリセットなどのテンプレートアプリ
 `git clone`から**10コマンド以内で**アプリが起動する
 
 ## できるもの
@@ -77,7 +77,7 @@ $ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
 - admin1@example.com (role:admin)/ 123456
 - user1@example.com (role:user)/ 123456
 ```
-$ bin/cake migrations seed --seed
+$ bin/cake migrations seed
 ```
 ### cleanup
 ```
