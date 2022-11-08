@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -x
-
 if git rev-parse --verify HEAD >/dev/null 2>&1
    :
 then
@@ -20,17 +18,17 @@ for FILE in `git diff --name-only --cached --diff-filter=ACMRTUXB | grep -vE "ve
     # phpシンタックスのチェック
     php -l $FILE || exit 1
     (vendor/bin/php-cs-fixer fix $FILE && git add $FILE)
-    vendor/bin/phpmd $FILE text unusedcode || exit 1
+    vendor/bin/phpmd $FILE text unusedcode || IS_ERROR=1
 
 done
 
 # コミットされるファイルのうち、.jsで終わるもの
 for FILE in `git diff --name-only --cached --diff-filter=ACMRTUXB | grep -vE "vendor/|vendor_custom/" | grep -E "js$" `; do
-    npx prettier --config .prettierrc.js --write $FILE
+    npx prettier --config .prettierrc.js --write $FILE || IS_ERROR=1
     npx eslint -c .eslintrc.js $FILE || IS_ERROR=1
     git add $FILE
 done
 
-docker-compose run --rm web composer test || exit 1
+docker-compose run --rm web composer test || IS_ERROR=1
 
 exit $IS_ERROR
