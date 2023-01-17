@@ -77,7 +77,7 @@ $ docker-compose run --rm web bin/cake migrations migrate -p CakeDC/Users
 - admin1@example.com (role:admin)/ 123456
 - user1@example.com (role:user)/ 123456
 ```
-$ bin/cake migrations seed
+$ docker-compose run --rm web bin/cake migrations seed
 ```
 ### cleanup
 ```
