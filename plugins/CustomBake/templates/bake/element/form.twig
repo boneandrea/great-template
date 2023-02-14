@@ -30,32 +30,27 @@
                                         <legend><?= __('{{ action|humanize }} {{ singularHumanName }}') ?></legend>
                                         {% for field in fields %}
                                             <div class="form-group w-75">
-                                                <?php
-                                                {%- if field not in primaryKey %}
-                                                    {%- if keyFields[field] is defined %}
-                                                        {%- set fieldData = Bake.columnData(field, schema) %}
-                                                        {%- if fieldData.null %}
-                                                            echo $this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'empty' => true, 'class' => 'form-control']);
-                                                            {{- "\n" }}
-                                                        {%- else %}
-                                                            echo $this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'class' => 'form-control']);
-                                                            {{- "\n" }}
-                                                        {%- endif %}
-                                                    {%- elseif field not in ['created', 'modified', 'updated'] %}
-                                                        {%- set fieldData = Bake.columnData(field, schema) %}
-                                                        {%- if fieldData.type in ['date', 'datetime', 'time'] and fieldData.null %}
-                                                            echo $this->Form->control('{{ field }}', ['empty' => true,'class' => 'form-control']);
-                                                            {{- "\n" }}
-                                                        {%- else %}
-                                                            echo $this->Form->control('{{ field }}', ['class' => 'form-control']);
-                                                            {{- "\n" }}
-                                                        {%- endif %}
+                                            {%- if field not in primaryKey %}
+                                                {%- if keyFields[field] is defined %}
+                                                    {%- set fieldData = Bake.columnData(field, schema) %}
+                                                    {%- if fieldData.null %}
+                                                        <?=$this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'empty' => true, 'class' => 'form-control'])?>
+                                                    {%- else %}
+                                                        <?=$this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'class' => 'form-control'])?>
+                                                    {%- endif %}
+                                                {%- elseif field not in ['created', 'modified', 'updated'] %}
+                                                    {%- set fieldData = Bake.columnData(field, schema) %}
+                                                    {{- "\n" }}
+                                                    {%- if fieldData.type in ['date', 'datetime', 'time'] and fieldData.null %}
+                                                        <?=$this->Form->control('{{ field }}', ['empty' => true,'class' => 'form-control'])?>
+                                                    {%- else %}
+                                                        <?=$this->Form->control('{{ field }}', ['class' => 'form-control'])?>
                                                     {%- endif %}
                                                 {%- endif %}
-                                            ?>
-                                            {{- "\n" }}
+                                           {%- endif %}
+                                           {{- "\n" }}
                                             </div>
-                                            {{- "\n" }}
+                                           {{- "\n" }}
                                          {%- endfor %}
                                          {%- if associations.BelongsToMany is defined %}
                                              {%- for assocName, assocData in associations.BelongsToMany %}
