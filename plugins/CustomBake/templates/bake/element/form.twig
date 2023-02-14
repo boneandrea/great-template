@@ -26,43 +26,49 @@
                             <div class="column-responsive column-80">
                                 <div class="{{ pluralVar }} form content">
                                     <?= $this->Form->create(${{ singularVar }}) ?>
+                                    {{- "\n" }}
                                     <fieldset>
                                         <legend><?= __('{{ action|humanize }} {{ singularHumanName }}') ?></legend>
                                         {% for field in fields %}
-                                            <div class="form-group w-75">
                                             {%- if field not in primaryKey %}
                                                 {%- if keyFields[field] is defined %}
-                                                    {%- set fieldData = Bake.columnData(field, schema) %}
-                                                    {%- if fieldData.null %}
-                                                        <?=$this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'empty' => true, 'class' => 'form-control'])?>
-                                                    {%- else %}
-                                                        <?=$this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'class' => 'form-control'])?>
-                                                    {%- endif %}
-                                                {%- elseif field not in ['created', 'modified', 'updated'] %}
-                                                    {%- set fieldData = Bake.columnData(field, schema) %}
-                                                    {{- "\n" }}
-                                                    {%- if fieldData.type in ['date', 'datetime', 'time'] and fieldData.null %}
-                                                        <?=$this->Form->control('{{ field }}', ['empty' => true,'class' => 'form-control'])?>
-                                                    {%- else %}
-                                                        <?=$this->Form->control('{{ field }}', ['class' => 'form-control'])?>
-                                                    {%- endif %}
+                                                {{- "\n" }}
+                                                <div class="form-group w-75">
+                                                {%- set fieldData = Bake.columnData(field, schema) %}
+                                                {%- if fieldData.null %}
+                                                    <?=$this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'empty' => true, 'class' => 'form-control'])?>
+                                                {%- else %}
+                                                    <?=$this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'class' => 'form-control'])?>
                                                 {%- endif %}
-                                           {%- endif %}
-                                           {{- "\n" }}
-                                            </div>
-                                           {{- "\n" }}
+                                                {{- "\n" }}
+                                                </div>
+                                                {%- elseif field not in ['created', 'modified', 'updated'] %}
+                                                {{- "\n" }}
+                                                <div class="form-group w-75">
+                                                {%- set fieldData = Bake.columnData(field, schema) %}
+                                                {{- "\n" }}
+                                                {%- if fieldData.type in ['date', 'datetime', 'time'] and fieldData.null %}
+                                                    <?=$this->Form->control('{{ field }}', ['empty' => true,'class' => 'form-control'])?>
+                                                {%- else %}
+                                                    <?=$this->Form->control('{{ field }}', ['class' => 'form-control'])?>
+                                                {%- endif %}
+                                                {{- "\n" }}
+                                                </div>
+                                                {{- "\n" }}
+                                                {%- endif %}
+                                            {%- endif %}
                                          {%- endfor %}
                                          {%- if associations.BelongsToMany is defined %}
                                              {%- for assocName, assocData in associations.BelongsToMany %}
                                                  <?=$this->Form->control('{{ assocData.property }}._ids', ['options' => ${{ assocData.variable }}, 'class' => 'form-control'])?>
                                                  {{- "\n" }}
-                                                 {{- "\n" }}
                                              {%- endfor %}
                                          {% endif %}
-                                         </div>
                                     </fieldset>
                                     <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+                                    {{- "\n" }}
                                     <?= $this->Form->end() ?>
+                                    {{- "\n" }}
                                 </div>
                             </div>
                         </div>
