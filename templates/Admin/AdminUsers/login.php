@@ -2,7 +2,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="container mt-5">
-                <?= $this->Flash->render('flash', ['element' => 'admin/logout']) ?>
+                <?= $this->Flash->render('flash') ?>
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">管理者ログイン</h3>
