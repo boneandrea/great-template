@@ -42,6 +42,7 @@ class AdminUsersController extends AppController
 
 	public function login()
 	{
+		$this->viewBuilder()->setLayout('admin/login');
 		$this->request->allowMethod(['get', 'post']);
 		$result = $this->Authentication->getResult();
 		// regardless of POST or GET, redirect if user is logged in

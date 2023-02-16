@@ -43,8 +43,8 @@ class AppController extends Controller
 		]);
 		$this->viewBuilder()->setLayout('admin/default');
 
-        $user = $this->Authentication->getIdentity();
-        $this->set("user",$user);
+		$user = $this->Authentication->getIdentity();
+		$this->set('user', $user);
 
 		/*
 		 * Enable the following component for recommended CakePHP form protection settings.
