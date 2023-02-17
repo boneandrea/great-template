@@ -22,6 +22,9 @@
             <div class="top-nav-title">
                 <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
             </div>
+            <div class="top-nav-links">
+                <a class="logout" href="/logout">Logout</a>
+            </div>
         </nav>
         <main class="main">
             <div class="container">
@@ -31,5 +34,12 @@
         </main>
         <footer>
         </footer>
+        <script>
+            q(".logout").addEventListener("click", e=>{
+                if(!confirm("ログアウトしますか？")){
+                    e.preventDefault();
+                }
+            });
+        </script>
     </body>
 </html>

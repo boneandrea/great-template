@@ -20,6 +20,7 @@ class UsersController extends AppController
 			'logoutRedirect' => '/users/login',  // Default is false
 		]);
 		$user = $this->Authentication->getIdentity();
+		$this->viewBuilder()->setLayout('user');
 		$this->set('user', $user);
 	}
 
