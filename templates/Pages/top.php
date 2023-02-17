@@ -99,7 +99,7 @@
                     <div class="row">
                         <div class="column links">
                             <h3>For user</h3>
-                            <a href="/pages/hello">static page</a>
+                            <a href="/pages/static">static page</a>
                             <a href="/login">user login</a>
                             <a href="/mypage">mypage</a>
                             <h3>For admin</h3>
