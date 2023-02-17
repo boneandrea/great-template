@@ -22,6 +22,7 @@ namespace App\Test\TestCase\Controller;
 
 use Cake\Core\Configure;
 use Cake\TestSuite\Constraint\Response\StatusCode;
+use Cake\TestSuite\EmailTrait;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
@@ -34,6 +35,7 @@ class PagesControllerTest extends TestCase
 {
 	use IntegrationTestTrait;
 	use \App\Test\TestCase\Controller\CommonTrait;
+	use EmailTrait;
 
 	/**
 	 * testDisplay method.
@@ -119,17 +121,42 @@ class PagesControllerTest extends TestCase
 		$this->assertResponseNotContains('CSRF');
 	}
 
-	public function testOpenPage()
-	{
-		$this->get('/');
-		$this->assertResponseOk();
-		$this->assertResponseContains('公開ページ');
-	}
-
-	public function testOpenPage1()
+	public function testStaticPage()
 	{
 		$this->get('/pages/static');
 		$this->assertResponseOk();
 		$this->assertResponseContains('これも公開ページ');
+	}
+
+	public function testInquiryPage()
+	{
+		$this->get('/pages/inquiry');
+		$this->assertResponseOk();
+	}
+
+	public function testInquiryConfirmPage()
+	{
+		$this->post('/pages/inquiry/confirm', [
+			'Contact' => [
+				'name' => 'name',
+				'email' => 'email@example.com',
+				'content' => 'content',
+			],
+		]);
+		$this->assertSame('name', $this->dom()->filter('.parts-form__confirmation-text')->eq(0)->text());
+	}
+
+	public function testInquiryComplete()
+	{
+		$this->session([
+			'Contact' => [
+				'name' => 'name',
+				'email' => 'email@example.com',
+				'content' => 'content',
+			],
+		]);
+		$this->post('/pages/inquiry/complete', []);
+		$this->assertResponseOk();
+		$this->assertMailCount(1);
 	}
 }

@@ -1,6 +1,6 @@
 <?php
-	$session = $this->request->getSession()->read('Contact');
-	?>
+$session = $this->request->getSession()->read('Contact');
+?>
 <div class="page-contact">
     <div class="page-contact__inner">
         <div class="contact">
