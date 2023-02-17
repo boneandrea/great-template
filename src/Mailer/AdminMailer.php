@@ -34,8 +34,7 @@ class AdminMailer extends UsersMailer
 
 		$this
 			->setTo($user['email'])
-			//			->setFrom('info@enrike.tokyo')
-			->setSubject('【WFS】パスワード再設定')
+			->setSubject('パスワード再設定')
 			->setEmailFormat(Message::MESSAGE_TEXT)
 			->setViewVars($viewVars);
 		$this
@@ -43,32 +42,15 @@ class AdminMailer extends UsersMailer
 			->setTemplate('resetPassword');
 	}
 
-	protected function exchangeSpotifyPoint(EntityInterface $user, int $point)
+	protected function inquiry(array $mailData)
 	{
-		$viewVars = compact('point');
+		$viewVars = $mailData;
 
 		$this
-			->setTo($user['email'])
-			->setFrom('info@enrike.tokyo')
-			->setSubject('エンリケポイントの交換が完了しました')
+			->setTo($mailData['email'])
+			->setSubject('contact')
 			->setEmailFormat(Message::MESSAGE_TEXT)
-			->setViewVars($viewVars);
-	}
-
-	protected function validation(EntityInterface $user)
-	{
-		$viewVars = [
-			'activationUrl' => UsersUrl::actionUrl('validateEmail', [
-				'_full' => true,
-				$user['token'],
-			]),
-		] + $user->toArray();
-
-		$this
-			->setTo($user['email'])
-			->setFrom('info@enrike.tokyo')
-			->setSubject('[エンリケ]会員仮登録のお知らせ')
-			->setEmailFormat(Message::MESSAGE_TEXT)
-			->setViewVars($viewVars);
+			->setViewVars($viewVars)
+			->viewBuilder();
 	}
 }

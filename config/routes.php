@@ -53,11 +53,11 @@ return static function (RouteBuilder $routes) {
 		 * to use (in this case, templates/Pages/home.php)...
 		 */
 		$builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'top']);
-
 		$builder->connect('/mypage', ['controller' => 'Users', 'action' => 'mypage']);
-
+		$builder->post('/pages/inquiry/', ['controller' => 'Pages', 'action' => 'inquiry']);
+		$builder->post('/pages/inquiry/confirm', ['controller' => 'Pages', 'action' => 'inquiryConfirm']);
+		$builder->connect('/pages/inquiry/complete', ['controller' => 'Pages', 'action' => 'inquiryComplete']);
 		$builder->connect('/pages/*', 'Pages::display');
-
 		/*
 		 * Connect catchall routes for all controllers.
 		 *

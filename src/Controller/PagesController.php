@@ -24,6 +24,7 @@ use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
+use Cake\Mailer\MailerAwareTrait;
 use Cake\View\Exception\MissingTemplateException;
 
 /**
@@ -35,18 +36,8 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
-	/**
-	 * Displays a view.
-	 *
-	 * @param string ...$path Path segments.
-	 *
-	 * @throws \Cake\Http\Exception\ForbiddenException       when a directory traversal attempt
-	 * @throws \Cake\View\Exception\MissingTemplateException when the view file could not
-	 *                                                       be found and in debug mode
-	 * @throws \Cake\Http\Exception\NotFoundException        when the view file could not
-	 *                                                       be found and not in debug mode
-	 * @throws \Cake\View\Exception\MissingTemplateException in debug mode
-	 */
+	use MailerAwareTrait;
+
 	public function display(string ...$path): ?Response
 	{
 		$this->loadComponent('Authentication.Authentication', [
@@ -79,6 +70,22 @@ class PagesController extends AppController
 				throw $exception;
 			}
 			throw new NotFoundException();
+		}
+	}
+
+	public function inquiry()
+	{
+	}
+
+	public function inquiryConfirm()
+	{
+		$this->request->getSession()->write('Contact', $this->request->getData('Contact'));
+	}
+
+	public function inquiryComplete()
+	{
+		if ($mailData = $this->request->getSession()->consume('Contact')) {
+			$this->getMailer('Admin')->send('inquiry', [$mailData]);
 		}
 	}
 }

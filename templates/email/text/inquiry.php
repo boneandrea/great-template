@@ -1,0 +1,5 @@
+お問い合わせ
+
+    name: <?= $name?><?= PHP_EOL?>
+    email: <?= $email?><?= PHP_EOL?>
+    text: <?= $content?><?= PHP_EOL?>

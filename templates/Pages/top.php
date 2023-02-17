@@ -102,6 +102,7 @@
                             <a href="/pages/static">static page</a>
                             <a href="/login">user login</a>
                             <a href="/mypage">mypage</a>
+                            <a href="/pages/inquiry/">contact</a>
                             <h3>For admin</h3>
                             <a href="/admin/login">admin login</a>
                             <a href="/admin/dashboard">admin dashboard</a>

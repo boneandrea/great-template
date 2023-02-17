@@ -110,7 +110,7 @@ return [
 		[
 			'role' => '*',
 			'controller' => 'Pages',
-			'action' => 'display',
+			'action' => ['display', 'login', 'privacyPolicy', 'company', 'inquiry'],
 		],
 		[
 			'role' => '*',
