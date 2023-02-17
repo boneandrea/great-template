@@ -153,4 +153,21 @@ class UsersTable extends CDUserTable
 
 		return $rules;
 	}
+	public function findUser($q, array $opt = [])
+	{
+		return $q->where([
+			'role' => 'user',
+			'active' => true,
+		]);
+	}
+
+	public function findAdminUser($q)
+	{
+		return $q->where([
+			'role IN' => [
+		 		'admin',
+				'superuser',
+			],
+		]);
+	}
 }

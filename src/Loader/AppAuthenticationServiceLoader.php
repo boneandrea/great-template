@@ -34,6 +34,7 @@ class AppAuthenticationServiceLoader extends AuthenticationServiceLoader
 			'resolver' => [
 				'className' => 'Authentication.Orm',
 				'userModel' => 'Users',
+                "finder"=>"User",
 			],
 			'fields' => [
 				'username' => 'email',
@@ -68,6 +69,7 @@ class AppAuthenticationServiceLoader extends AuthenticationServiceLoader
 			'resolver' => [
 				'className' => 'Authentication.Orm',
 				'userModel' => 'Users',
+                "finder"=>"AdminUser",
 			],
 			'fields' => [
 				'username' => 'email',
