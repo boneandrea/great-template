@@ -36,7 +36,7 @@
                         <a href="/admin/users" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>
-                                ユーザ管理
+                                ユーザ
                             </p>
                         </a>
                     </li>
@@ -52,7 +52,7 @@
                 <a href="/admin/admin-users" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
-                        管理者の管理
+                        管理者
                     </p>
                 </a>
             </li>
