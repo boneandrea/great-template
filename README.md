@@ -93,6 +93,13 @@ $ docker-compose up -d
 - http://localhost:3000 (WebApp)
 - http://localhost:8025 (Email client)
 
+ポート変更は`.env`で行う
+```
+WEB_PORT=3000
+DB_PORT=3306
+MAIL_PORT=8025
+```
+
 # test
 ```
 $ docker-compose --rm web composer test
