@@ -3,6 +3,7 @@ return [
     'Security' => [
         // 'salt' => ''
     ],
+	'debug' => true,
     'Datasources' => [
         'default' => [
             'host' => 'db',
