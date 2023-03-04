@@ -23,18 +23,19 @@ return [
 				'requestResetPassword',
 				// UserValidationTrait used in PasswordManagementTrait
 				'resendTokenValidation',
-				'linkSocial',
-				// U2F actions
-				'u2f',
-				'u2fRegister',
-				'u2fRegisterFinish',
-				'u2fAuthenticate',
-				'u2fAuthenticateFinish',
-				'webauthn2fa',
-				'webauthn2faRegister',
-				'webauthn2faRegisterOptions',
-				'webauthn2faAuthenticate',
-				'webauthn2faAuthenticateOptions',
+			],
+			'bypassAuth' => true,
+		],
+		[
+			'role' => '*',
+			'prefix' => 'Admin',
+			'plugin' => "*",
+			'controller' => 'AdminUsers',
+			'action' => [
+				// PasswordManagementTrait used in RegisterTrait
+				'changePassword',
+				'resetPassword',
+				'requestResetPassword',
 			],
 			'bypassAuth' => true,
 		],

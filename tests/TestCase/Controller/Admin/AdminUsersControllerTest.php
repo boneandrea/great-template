@@ -137,4 +137,10 @@ class AdminUsersControllerTest extends TestCase
 		$this->assertRedirect();
 		$this->assertSame($count - 1, $this->fetchTable('Users')->find()->count());
 	}
+
+	public function testRequestResetPassword(): void
+	{
+		$this->get('/admin/admin-users/request-reset-password');
+		$this->assertResponseOk();
+	}
 }

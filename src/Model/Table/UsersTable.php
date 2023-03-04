@@ -148,7 +148,10 @@ class UsersTable extends CDUserTable
 
 		// 作成および更新操作に提供されるルールを追加
 		$rules->add(function ($entity, $options) {
-			return in_array($entity->role, UserRole::USER->values());
+			if ($entity->role === 'user') {
+				return !empty($entity->username);
+			}
+            return true;
 		}, 'roleRule');
 
 		return $rules;

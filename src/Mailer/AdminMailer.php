@@ -25,11 +25,19 @@ class AdminMailer extends UsersMailer
 	{
 		$user->setHidden(['password', 'token_expires', 'api_token']);
 
+		$activationUrl = UsersUrl::actionUrl('resetPassword', [
+			'_full' => true,
+			$user['token'],
+		]);
+
+		if ($user->role !== 'user') {
+			$activationUrl['prefix'] = 'Admin';
+			$activationUrl['plugin'] = false;
+			$activationUrl['controller'] = 'AdminUsers';
+		}
+
 		$viewVars = [
-			'activationUrl' => UsersUrl::actionUrl('resetPassword', [
-				'_full' => true,
-				$user['token'],
-			]),
+			'activationUrl' => $activationUrl,
 		] + $user->toArray();
 
 		$this
@@ -39,7 +47,7 @@ class AdminMailer extends UsersMailer
 			->setViewVars($viewVars);
 		$this
 			->viewBuilder()
-			->setTemplate('resetPassword');
+			->setTemplate($user->role === 'user' ? 'resetPassword' : 'adminResetPassword');
 	}
 
 	protected function inquiry(array $mailData)

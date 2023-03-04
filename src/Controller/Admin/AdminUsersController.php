@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use CakeDC\Users\Controller\Traits\PasswordManagementTrait;
 use CakeDC\Users\Controller\Traits\LoginTrait;
 use CakeDC\Users\Controller\Traits\ProfileTrait;
 
@@ -14,18 +15,24 @@ use CakeDC\Users\Controller\Traits\ProfileTrait;
 class AdminUsersController extends AppController
 {
 	use LoginTrait;
+	use PasswordManagementTrait;
 	use ProfileTrait;
 
-	public function initialize(): void
+    public function initialize(): void
 	{
 		parent::initialize();
 		$this->Users = $this->fetchTable('Users');
+		$this->loadComponent('Login');
+
+		if (in_array($this->getRequest()->getParam('action'), ['login', 'requestResetPassword', 'resetPassword', 'changePassword'])) {
+			$this->viewBuilder()->setLayout('admin/login');
+		}
 	}
 
 	public function beforeFilter(\Cake\Event\EventInterface $event)
 	{
 		parent::beforeFilter($event);
-		$this->Authentication->addUnauthenticatedActions(['login']);
+		$this->Authentication->addUnauthenticatedActions(['login', 'requestResetPassword', 'resetPassword', 'changePassword']);
 	}
 
 	public function dashboard()

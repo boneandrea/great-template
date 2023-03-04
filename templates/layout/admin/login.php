@@ -28,7 +28,7 @@
             referrerpolicy="no-referrer"
         />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        <title></title>
+        <title><?= $this->fetch('title')?></title>
     </head>
     <body class="login">
         <?= $this->fetch('content') ?>

@@ -40,6 +40,7 @@ class AppController extends Controller
 		$this->loadComponent('Flash');
 		$this->loadComponent('Authentication.Authentication', [
 			'logoutRedirect' => '/admin/login',
+			'loginAction' => '/admin/login',
 		]);
 		$this->viewBuilder()->setLayout('admin/default');
 
